@@ -7,7 +7,7 @@ import java.util.HashMap;
  * */
 
 public class No3 {
-    public int lengthOfLongestSubstring(String s) {
+    public int lengthOfLongestSubstringSol1(String s) {
         if ( s == null ) return 0;
         char [] sc = s.toCharArray();
         int preLength =0 ;
@@ -27,5 +27,29 @@ public class No3 {
         
         
         return Math.max(preLength,map.size());
+    }
+    public int lengthOfLongestSubstringSol2(String s) {
+        if ( s == null ) return 0;
+        char [] sc = s.toCharArray();
+        
+        boolean flag[] = new boolean[256];
+        int result =0, start=0;
+        
+        for (int i =0; i<s.length();i++){
+        	char current = sc[i];
+        	if (flag[current]){
+        		result = Math.max(result,i-start);
+        		
+        		for (int k =start; k<i ; k++){
+        			if(sc[k] == current){
+        				start = k+1;
+        				break;
+        			}
+        			flag[sc[k]] = false;
+        		}
+        	}else flag[current] = true;
+        }
+        
+      return Math.max(result , sc.length-start);
     }
 }
