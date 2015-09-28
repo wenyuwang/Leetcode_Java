@@ -26,5 +26,32 @@ public class Solution {
     	}
     	return s.substring(left+1, right);
     }
+    
+    public int lengthOfLongestSubstring(String s) {
+    	if(s == null || s.length() == 0) return 0;
+    	int maxLength = 0;
+    	boolean [] flag = new boolean[256];
+    	char [] sc= s.toCharArray();
+    	int result = 0 ; int start = 0;
+    	
+    	for(int i =0; i<s.length();i++){
+    		char current = sc[i];
+    		if (flag[current]){
+    				result = Math.max(result, i-start);
+    				for (int k = start; k<i; k++){
+    					if(sc[k] == current){
+    						start = k+1;
+    						break;
+    					}
+    					flag[sc[k]] = false;
+    			}
+    		}
+    		else{
+    			flag[current] =true;
+    		}
+    	}
+    	
+    	return Math.max(result, sc.length-start);
+    }
 }
 
