@@ -79,6 +79,20 @@ public ListNode mergeTwoListsRecursive(ListNode l1, ListNode l2) {
 		return head;
 	}
 	
+    public ListNode removeElements(ListNode head, int val) {
+    	
+    	if(head == null) return null;
+    	
+    	ListNode curNode = head;
+    	while(curNode.next != null){
+    		if (curNode.next.val == val) curNode.next = curNode.next.next;
+
+    		else curNode= curNode.next;
+    	}
+    	
+    	 return head.val == val ? head.next : head;
+    }
+	
 	public int getLength(ListNode head){
 		int count =0;
 		ListNode p = head;
