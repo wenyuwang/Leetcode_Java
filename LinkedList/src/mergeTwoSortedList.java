@@ -59,7 +59,36 @@ public ListNode mergeTwoListsRecursive(ListNode l1, ListNode l2) {
 		headNext.next = head;
 		return restList;
 	}
+	
+	public ListNode removeNthFromEnd(ListNode head, int n) {
+		if(head == null  ) return head;
+		int pos = getLength(head)-n;
+		if (pos ==0 )return head.next;
+		
+		ListNode p = head;
+		
+		while(p!=null){
+			if (pos ==1){
+				//p.next.val = p.next.next.val;
+				p.next = p.next.next;
+			}
+			p = p.next;
+			pos --;
+		}
 
+		return head;
+	}
+	
+	public int getLength(ListNode head){
+		int count =0;
+		ListNode p = head;
+		while(p!=null){
+			p=p.next;
+			count +=1;
+		}
+		return count;
+	}
+	
 	/**
 	 * Definition for singly-linked list.
 	 */
