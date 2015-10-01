@@ -5,7 +5,7 @@ public class Solution {
 
 		if(root == null) return true;
 		if(root.right == null && root.left == null) return true;
-		if(Math.abs(  nodeCount(root.left)-nodeCount(root.right) )>1) return false;
+		if(Math.abs(  maxDepth(root.left)-maxDepth(root.right) )>1) return false;
 
 
 		return isBalanced(root.left) && isBalanced(root.right) ; 
@@ -22,11 +22,11 @@ public class Solution {
     }
 	
 	
-	public int nodeCount (TreeNode root){
+	public int maxDepth (TreeNode root){
 
 		if (root == null) return 0;
 
-		return 1+Math.max(nodeCount(root.left), nodeCount(root.right));
+		return 1+Math.max(maxDepth(root.left), maxDepth(root.right));
 	}
 
 	
