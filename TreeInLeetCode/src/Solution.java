@@ -11,6 +11,16 @@ public class Solution {
 		return isBalanced(root.left) && isBalanced(root.right) ; 
 	}
 	
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        
+        if(p==null && q==null) return true;
+        if (p == null || q== null ) return false;
+        
+        return(p.val == q.val &&
+                isSameTree(p.right, q.right) && isSameTree(p.left, q.left));
+        
+    }
+	
 	
 	public int nodeCount (TreeNode root){
 
