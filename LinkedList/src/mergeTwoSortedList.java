@@ -49,6 +49,17 @@ public ListNode mergeTwoListsRecursive(ListNode l1, ListNode l2) {
 	return node;
 	}
 	
+
+	public ListNode reverseList(ListNode head) {
+		
+		if(head == null || head.next == null) return head;
+		ListNode headNext = head.next;
+		head.next = null;
+		ListNode restList = reverseList(headNext);
+		headNext.next = head;
+		return restList;
+	}
+
 	/**
 	 * Definition for singly-linked list.
 	 */
