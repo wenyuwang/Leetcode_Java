@@ -36,14 +36,17 @@ public class RecursionSkeletonTester {
 		assertEquals(6,RecursionSkeleton.addUp(384));
 		
 		assertEquals(725,RecursionSkeleton.complement(385));
+		assertEquals(826,RecursionSkeleton.complement(284));
+
 		
 		assertEquals("433$1B1x",RecursionSkeleton.compress("3333$$$Bx"));
 		assertEquals("3$2b65",RecursionSkeleton.compress("$$$bb555555"));
 		
-		
+		System.out.println(RecursionSkeleton.ZeroOutOddDigits(3250));
 		assertEquals(200,RecursionSkeleton.ZeroOutOddDigits(3250));
 		assertEquals(0,RecursionSkeleton.ZeroOutOddDigits(3050));
-		
+
+		System.out.println(RecursionSkeleton.commafy(5624827));
 		assertEquals("5,624,827",RecursionSkeleton.commafy(5624827));
 		
 		assertEquals("007",RecursionSkeleton.prependTo3(7));

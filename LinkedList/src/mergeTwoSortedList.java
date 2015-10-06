@@ -92,6 +92,10 @@ public ListNode mergeTwoListsRecursive(ListNode l1, ListNode l2) {
     	
     	 return head.val == val ? head.next : head;
     }
+    
+    public boolean isPalindrome(ListNode head) {
+    	return false;
+    }
 	
 	public int getLength(ListNode head){
 		int count =0;

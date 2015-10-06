@@ -20,22 +20,22 @@ public class RecursionSkeleton {
 	//done
     /** Return the number of times c occurs in s. */
     public static int number(char c, String s) {
-    	if (s.length()==0) return 0;
-    	return (c == s.charAt(0) ? 1: 0) + number(c,s.substring(1));
+    	if(s.length() ==0 ) return 0;
+    	return (s.charAt(0) == c ?1 :0)+ number(c,s.substring(1));
     	
     }
     //done
     /** Return a copy of s with each character duplicated. */
     public static String dup(String s) {
-    	if (s.length()==0) return "";
-    	return (s.charAt(0) + dup(s.substring(1)));
+    	if(s.length() ==0 ) return "";
+    	return s.charAt(0) + dup(s.substring(1));
     }
 
     //done
     /** Return a copy of s with duplicate adjacent chars deleted.
      * Example, for "baaacca$$%", return  "baca$%"*/
     public static String removeAdjacentDups(String s) {
-    	if(s.length() <=1) return s;
+    	if(s.length() <=1  )  return s;
     	if(s.charAt(0) == s.charAt(1)) return removeAdjacentDups(s.substring(1));
     	return s.charAt(0)+removeAdjacentDups(s.substring(1));
     }
@@ -43,7 +43,7 @@ public class RecursionSkeleton {
     /** Return a String of n characters, each being c.
      * Precondition: n >= 0*/
     public static String repeated(char c, int n) {
-        if (n==0) return "";
+    	if(n ==0  ) return "";
     	return c + repeated(c,n-1);
     }
 
@@ -57,9 +57,9 @@ public class RecursionSkeleton {
     public static String decompress(String s) {
         //Hint: Make use of function repeated, just above.
         // Study it!
-    	if(s.length() == 0) return "";
+    	if(s.length() ==0 ) return s;
     	int n = Integer.parseInt(s.substring(0,1));
-    	return repeated(s.charAt(1), n) + decompress(s.substring(2));
+    	return repeated(s.charAt(1),n) + decompress(s.substring(2));
     }
 
     /** Return s but in compressed form --see function decompresss above.
@@ -69,12 +69,12 @@ public class RecursionSkeleton {
     public static String compress(String s) {
         // Hint. It's ok to use a loop to find the end of the sequence
         // of = chars at beginning of s
-    	if(s.length() == 0) return "";
+    	if(s.length() ==0 ) return s;
     	int k =1;
-    	while(k < s.length() && s.charAt(0) == s.charAt(k)){
-    		k = k+1;
+    	while (k < s.length() && s.charAt(0) == s.charAt(k)){
+    		k = k +1;
     	}
-    	return k + (s.charAt(0) +  compress(s.substring(k)));
+    	return k + ( s.charAt(0) + compress(s.substring(k)));
     }
 
     //done
@@ -83,8 +83,8 @@ public class RecursionSkeleton {
      * Do it by splitting the string into s[0] and s[1..] (i.e. the rest of s)
      */
     public static String reverse1(String s) {
-    	if (s.length() <=1 ) return s;
-        return reverse1(s.substring(1)) + s.charAt(0);
+    	if (s.length() == 0 ) return s;
+    	 return reverse1(s.substring(1)) + s.charAt(0);
     }
     //done
     /** Return the reverse of s.
@@ -93,9 +93,9 @@ public class RecursionSkeleton {
      * Do it by splitting the string into s[0] and s[1..n-1] and s[n].
      */
     public static String reverse2(String s) {
-    	if (s.length() <=1 ) return s;
+    	if (s.length() == 0 ) return s;
     	int n = s.length()-1;
-        return s.charAt(n) + reverse2(s.substring(1,n)) + s.charAt(0);
+    	return s.charAt(n)+ reverse1(s.substring(1,n)) + s.charAt(0);
     }
 
     /** Return the number of decimal digits needed to write n.
@@ -106,7 +106,7 @@ public class RecursionSkeleton {
     
     //done
     public static int numDigits(int n) {
-        if (n<10) return 1 ;
+        if ( n <10 ) return 1;
     	return 1 + numDigits(n/10);
     }
 
@@ -116,8 +116,8 @@ public class RecursionSkeleton {
      */
     //done
     public static int sumDigits(int n) {
-    	if ( n < 10) return n;
-        return sumDigits(n/10 )+ n%10;
+    	if (n<10) return n;
+    	return sumDigits(n/10) + n%10;
     }
 
     /** Return n with all of its odd digits replaced by 0.
@@ -129,8 +129,8 @@ public class RecursionSkeleton {
     public static int ZeroOutOddDigits(int n) {
         // Do NOT use Strings or anything like that. Stick to int
     	if (n==0) return 0;
-    	int r = n %10;
-        return 10*ZeroOutOddDigits(n/10) + (r%2==0 ? r : 0);
+    	int r = n%10;
+    	return 10*ZeroOutOddDigits(n/10) + (r%2 ==0 ? r : 0);
     }
 
     /** Keep adding the digits of n together until the result is < 10.
@@ -141,16 +141,17 @@ public class RecursionSkeleton {
      */
     //done
     public static int addUp(int n) {
-    	if ( n < 10) return n;
-        return addUp(n/10 + n%10);
+    	if(n<10) return n;
+    	return addUp(n%10 + n/10);
     }
     //done
     /** Complement n --by replacing each digit k (say) of n by 10-k.
      * Precondition: n > 0 and no digit of n is 0.
      * Example: The complement of 3572 is 7538. */
     public static int complement(int n) {
-    	if ( n < 10) return (10-n);
-    	return 10*complement(n/10)+ 10-n%10;
+    	if (n==0) return 0;
+    	int r = n%10;
+    	return 10*complement(n/10) + (10-r);
     }
 
     /** Return n with commas placed the way Americans do it (many other
@@ -162,8 +163,8 @@ public class RecursionSkeleton {
     public static String commafy(long n) {
         // Do NOT start by making n into a String and then processing the
         // String. Instead, break n apart.
-        if(n <1000) return ""+n;
-    	return commafy(n/1000)+","+n%1000;
+    	if (n<1000) return ""+n;
+    	return commafy(n/1000)+"," + n%1000;
     }
     
     //done
@@ -172,8 +173,8 @@ public class RecursionSkeleton {
      * Precondition: n >= 0 */
     public static String prependTo3(long n) {
     	if (n<10) return "00"+n;
-    	if (n<100)return "0"+n;
-        return ""+n;
+    	if (n<100) return "0"+n;
+    	return ""+n;
 
     }
 
@@ -198,15 +199,15 @@ public class RecursionSkeleton {
          * (2) If obj is not of type Integer, it is an array and can be cast to
          *     type Object[]. You can then use the recursive function to get the
          *     sum of each of its elements and add them together */
-        if (obj instanceof Integer)
-        	return (Integer)obj;
-        
-        Object [] objectArray = (Object[]) obj;
-        int sum =0;
-        for (Object o: objectArray){
-        	sum = sum + arraySum(o);
-        }
-        return sum;
+    	
+    	if(obj instanceof Integer) return (int) obj;
+    	Object [] b = (Object[]) obj;
+    	int sum =0;
+    	for (Object o : b){
+    		sum = sum + arraySum(o);
+    	}
+    	
+    	return sum;
         
     }
 }
